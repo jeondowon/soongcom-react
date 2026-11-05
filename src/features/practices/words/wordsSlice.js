@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSelector, createSlice } from '@reduxjs/toolkit';
 import { KoreanInputMethod, inko } from '../../../helpers/KoreanInputMethod';
 import { EnglishInputMethod } from '../../../helpers/EnglishInputMethod';
-const API_PREFIX = "http://soongcom.kro.kr:3001"
+import { koreanWords, englishWords } from '../../../data/practiceData';
 
 const initialState = {
   level: 1,
@@ -16,8 +16,14 @@ const initialState = {
 export const fetchWords = createAsyncThunk('words/fetch', async (_, { getState, }) => {
   const { level } = getState().words;
   const { language } = getState().keyboards;
-  const response = await fetch(`${API_PREFIX}/practice/words?` + new URLSearchParams({ language, level })).then(res => res.json());
-  return response.words;
+  // 서버 대신 로컬 데이터 사용
+  let words = [];
+  if (language === 'korean') {
+    words = koreanWords[level];
+  } else {
+    words = englishWords[level];
+  }
+  return words || [];
 });
 
 const wordsSlice = createSlice({

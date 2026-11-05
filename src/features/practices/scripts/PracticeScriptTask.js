@@ -8,12 +8,11 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   incrementProgressPercent,
   incrementTypeCount,
-  selectWrongTyping,
   selectTypeSpeed,
   updateTitle,
 } from "./scriptSlice";
 import { useHistory, useLocation } from 'react-router-dom';
-import axios from 'axios'
+import { scripts } from '../../../data/practiceData';
 
 function PracticeScriptTask() {
   const dispatch = useDispatch();
@@ -32,7 +31,6 @@ function PracticeScriptTask() {
   const [currentResult, setCurrentResult] = useState("");
   const [currentInput, setCurrentInput] = useState("");
   const [inProgress, setInProgress] = useState(true);
-  const wrongTyping = useSelector(selectWrongTyping);
   const typeSpeed = useSelector(selectTypeSpeed);
   const location = useLocation();
 
@@ -103,56 +101,37 @@ function PracticeScriptTask() {
     setCurrentResult(script[step.current]);
     const id = Number(location.pathname.split("=")[1]);
     setInProgress(true);
-    axios({
-      method: 'get',
-      url: `http://soongcom.kro.kr:3001/practice/script?id=${id}`
-    })
-      .then(function(response){
-        const {content, name} = response.data.script;
-        var sentences = [];
-        
-        if (content.indexOf("\n") < 0) {
-          for (var startIndex = 0;startIndex < content.length;startIndex += 80)
-            sentences.push(content.substr(startIndex, 80));
-        } else {
-          sentences = content.split("\n");
-          for(var idx = 0; idx < sentences.length; idx++) 
-            if(sentences[idx].length == 0)
-              sentences.splice(idx, 1);
-        }
+    // 서버 대신 로컬 데이터에서 id가 같은 글을 찾음
+    const found = scripts.find((item) => item.id === id);
+    if (found) {
+      const {content, name} = found;
+      var sentences = [];
 
-        
-        setInProgress(false);
-        setScript(sentences);
-        dispatch(updateTitle(name));        
-      });
+      if (content.indexOf("\n") < 0) {
+        for (var startIndex = 0;startIndex < content.length;startIndex += 80)
+          sentences.push(content.substr(startIndex, 80));
+      } else {
+        sentences = content.split("\n");
+        for(var idx = 0; idx < sentences.length; idx++) 
+          if(sentences[idx].length == 0)
+            sentences.splice(idx, 1);
+      }
+
+      setInProgress(false);
+      setScript(sentences);
+      dispatch(updateTitle(name));
+    }
   }, []);
 
   useEffect(() => {
     if(inProgress) return;
     if (script.length > 0 && script.length <= step.current) {
-      if (Object.keys(wrongTyping).length != 0) {
-        axios
-          .post("http://soongcom.kro.kr:3001/practice/script/complete", {
-            wrongTyping: wrongTyping,
-          })
-          .then(function (response) {
-            const { list } = response.data;
-            history.push({
-              pathname: "/practice-result",
-              state: { typeSpeed: typeSpeed, scriptList: list },
-            });
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
-      }
-      else {
-        history.push({
-          pathname: "/practice-result",
-          state: { typeSpeed: typeSpeed },
-        });
-      }
+      // 원래는 틀린 글자를 서버로 보내 추천 글 목록을 받았지만,
+      // 서버가 없으므로 바로 결과 화면으로 이동
+      history.push({
+        pathname: "/practice-result",
+        state: { typeSpeed: typeSpeed },
+      });
       setInProgress(true);
       return;
     }

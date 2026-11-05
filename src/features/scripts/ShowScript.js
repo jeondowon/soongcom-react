@@ -1,4 +1,4 @@
-import axios from 'axios';
+import { scripts } from '../../data/practiceData';
 import React, { useState }  from 'react';
 import Title from '../../components/Title';
 import {useEffect} from "react"
@@ -8,18 +8,13 @@ import '../../sass/main.css';
 function ShowScript() {
   const [practices, setPractices] = useState([]);
 
-  async function getList() {
-    axios({
-      method: 'get',
-      url: 'http://soongcom.kro.kr:3001/practice/list'
-    })
-      .then(function(response){
-        var scriptList = response.data.list;
-        scriptList.sort((a, b) =>
-          a.name < b.name ? -1 : a.name > b.name ? 1 : 0
-        );
-        setPractices(scriptList);
-      });
+  function getList() {
+    // 서버 대신 로컬 데이터 사용 (원본 배열이 바뀌지 않도록 복사 후 정렬)
+    const scriptList = [...scripts];
+    scriptList.sort((a, b) =>
+      a.name < b.name ? -1 : a.name > b.name ? 1 : 0
+    );
+    setPractices(scriptList);
   }
 
   useEffect(() => {

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Title from '../../components/Title';
 import { Link } from "react-router-dom";
 import '../../sass/main.css';
-import axios from 'axios';
+import { scripts } from '../../data/practiceData';
 
 function AddScript() {
   const [title, setTitle] = useState('');
@@ -14,15 +14,14 @@ function AddScript() {
     registerScript();
   }
 
-  async function registerScript() {
-    axios({
-      method: 'post',
-      url: 'http://soongcom.kro.kr:3001/register/script',
-      data: {
-        ScriptName: title,
-        ScriptContent: contents
-      }
-    })
+  function registerScript() {
+    // 서버 대신 로컬 글 목록 배열에 추가 (새로고침하면 사라짐)
+    if (title.length === 0 || contents.length === 0) return;
+    scripts.push({
+      id: scripts.length + 1,
+      name: title,
+      content: contents,
+    });
   }
 
   var now = 'unfinish';
