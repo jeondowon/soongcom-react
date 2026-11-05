@@ -102,3 +102,11 @@ dist
 
 # TernJS port file
 .tern-port
+
+# Create React App
+/build
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.DS_Store

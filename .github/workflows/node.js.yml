@@ -9,7 +9,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [12.x, 14.x, 15.x]
+        node-version: [20.x, 22.x]
 
     steps:
     - uses: actions/checkout@v1
@@ -18,7 +18,6 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - name: npm install, build, and test
-      working-directory: ./front
       run: |
         npm ci
         npm run lint
