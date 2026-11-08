@@ -8,16 +8,6 @@ DetailMenu.propTypes = {
 };
 
 function DetailMenu({onChoose}) {
-  const CompeteModes = 
-    [{ title: '방 생성',
-      href: '/room-create',}, 
-    { title: '방 참여',
-      href: '/room-join',}];                    
-  const CompeteList = CompeteModes.map((menu,index) => 
-    <Link id = 'detail' to = {menu.href} key = {index}>
-      <li id='list'> {menu.title} </li>
-    </Link>);
-
   const PracticeModes = 
     [{ title: '자리연습',
       href: '/practice-key' }, 
@@ -42,25 +32,13 @@ function DetailMenu({onChoose}) {
       <li id='list'>{menu.title}</li>
     </Link>);
 
-  const InformationMenus = 
-    [{ title: '내 정보',
-      href: '/profile' }, 
-    { title: '통계',
-      href: '/stastics' }]; 
-  const InformationList = InformationMenus.map((menu,index) => 
-    <Link id = 'detail' to = {menu.href} key = {index}>
-      <li id='list'>{menu.title}</li>
-    </Link>);
-
   return (
     <div style={DetailMenuStyle}
       onMouseEnter={onChoose}
       onMouseLeave={onChoose}>
       <div style={MenuWrapperStyle}>
-        <ul id='detail-list' >{CompeteList}</ul>
         <ul id='detail-list'>{PracticeList}</ul>
         <ul id='detail-list'>{ScriptList}</ul>
-        <ul id='detail-list'>{InformationList}</ul>
       </div>
     </div>
   )

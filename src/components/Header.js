@@ -26,10 +26,8 @@ function Header() {
         <div style={MenuStyle}
           onMouseEnter={handleMouseHover}
           onMouseLeave={handleMouseHover} >
-          <div style={MenuItemStyle}>대결하기</div>
           <div style={MenuItemStyle}>연습하기</div>
           <div style={MenuItemStyle}>스크립트</div>
-          <div style={MenuItemStyle}>내 정보</div>
         </div>
         <div style={AvatarStyle}>
           <img width='40px' height='40px' src={Avatar} />
