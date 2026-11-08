@@ -15,12 +15,12 @@ function PracticeSentenceTask() {
   });
   const step = useRef(0);
   const tempData = [
-    "숭실대학교 컴퓨터학부가 생겨났다.",
+    "한동대학교 컴퓨터전자학부가 생겨났다.",
     "모든게 여전한 나라에서, 다른 느낌을 받는다.",
     "아이즈원의 노래는 잘 맞추는 사람이 있다.",
     "여러 곳을 들려 선물을 준비한 보람이 있다.",
     "토파즈 보석을 캤던 곳에서 다이아몬드를 주울 확률은 얼마나 될지 모르겠다.",
-    "숭실대학교 컴퓨터학부가 생겨났다.",
+    "한동대학교 컴퓨터전자학부가 생겨났다.",
     "다음 문장은 무엇일까?",
   ];
   const [language] = useState("korean");
@@ -39,29 +39,20 @@ function PracticeSentenceTask() {
       playKeyPress();
       dispatch(incrementTypeCount());
 
-      if (
-        event.code === "Enter" ||
-        userInput.length >= tempData[step.current].length
-      ) {
+      if (event.code === "Enter" || userInput.length >= tempData[step.current].length) {
         if (userInput.length < tempData[step.current].length) return;
         setFinishedResult(tempData[step.current]);
         setFinishedInput(userInput);
         setUserInput("");
         setCurrentResult(tempData[step.current + 1]);
-        dispatch(
-          incrementProgressPercent(((step.current + 1) / tempData.length) * 100)
-        );
+        dispatch(incrementProgressPercent(((step.current + 1) / tempData.length) * 100));
         flag = true;
         step.current = step.current + 1;
       }
 
       if (language === "korean") {
         setKoreanBuffer((buf) => {
-          const { nextUserInput, nextBuf } = KoreanInputMethod(
-            buf,
-            event,
-            userInput
-          );
+          const { nextUserInput, nextBuf } = KoreanInputMethod(buf, event, userInput);
           if (nextUserInput !== userInput) {
             if (!flag) setUserInput(nextUserInput);
           }
@@ -85,7 +76,7 @@ function PracticeSentenceTask() {
       //   return body.concat(event.key);
       // });
     },
-    [playKeyPress, language, userInput]
+    [playKeyPress, language, userInput],
   );
 
   useEffect(() => {
@@ -110,17 +101,9 @@ function PracticeSentenceTask() {
 
   return (
     <div className="sentence-task">
-      <Sentence
-        type="finished-result"
-        sentence={finishedResult}
-        input={finishedInput}
-      />
+      <Sentence type="finished-result" sentence={finishedResult} input={finishedInput} />
       <Sentence type="finished-input" sentence={finishedInput} />
-      <Sentence
-        type="current-result"
-        sentence={currentResult}
-        input={currentInput}
-      />
+      <Sentence type="current-result" sentence={currentResult} input={currentInput} />
       <Sentence type="current-input" sentence={currentInput} />
       {sentences}
     </div>
