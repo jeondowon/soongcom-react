@@ -21,7 +21,7 @@ function Header() {
     <div>
       <div style={HeaderStyle}>
         <Link to ='/' style={TitleStyle}>
-          <b>숭컴타자연습</b>
+          <b>한동타자연습</b>
         </Link>
         <div style={MenuStyle}
           onMouseEnter={handleMouseHover}
