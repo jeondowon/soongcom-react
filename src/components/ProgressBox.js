@@ -24,7 +24,7 @@ function ProgressBox ({title, figure, id}) {
           <div className="progress-border">
             <ProgressBar
               completed={progressPercent}
-              bgColor="#7BC5C5"
+              bgColor="#1F3A68"
               baseBgColor="#FFFFFF"
               borderRadius="2px"
               isLabelVisible={false}

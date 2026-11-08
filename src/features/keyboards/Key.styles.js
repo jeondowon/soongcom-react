@@ -6,7 +6,7 @@ const KeyDefaultStyle = {
   width: '32px',
   margin: '4px',
   fontSize: '1.5rem',
-  boxShadow: '0 1px 2px 0 #12CFC0, 0 1px 3px 1px #bdeaff'
+  boxShadow: '0 1px 2px 0 #1F3A68, 0 1px 3px 1px #D6E0F0'
 };
 
 const KeyPressedStyle = {

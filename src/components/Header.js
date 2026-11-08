@@ -43,7 +43,7 @@ function Header() {
 const HeaderStyle = {
   width: '100%',
   overflow: 'hidden',
-  background: '#7BC5C5',
+  background: '#1F3A68',
   height: '100px',
   fontSize: '25px',
   fontWeight: '400',

@@ -71,7 +71,7 @@
 .progress-box .left-content .text-box {
   margin-right: 10px;
   margin-top: 4px;
-  background-color: #7BC5C5;
+  background-color: #1F3A68;
   border-radius: 16px;
   padding-top: 2px;
   padding-bottom: 2px;
@@ -98,7 +98,7 @@
   margin-bottom: 5px;
   padding: 4px;
   padding-left: 20px;
-  color: #47A5C7;
+  color: #3A5F99;
 }
 
 .finished-result {
@@ -114,13 +114,13 @@
 }
 
 .current-result {
-  background-color: #47A5C7;
+  background-color: #3A5F99;
   color: #fff;
   border-radius: 30px;
 }
 
 .current-input {
-  background-color: #2B6D90;
+  background-color: #14284A;
   color: #fff;
   border-radius: 30px;
   margin-bottom: 12px;
@@ -277,8 +277,8 @@
       -ms-flex-pack: center;
           justify-content: center;
   margin: 0 20px 0 20px;
-  background: #7bc5c5;
-  border: 3px solid #7bc5c5;
+  background: #1F3A68;
+  border: 3px solid #1F3A68;
   border-radius: 50px;
   -webkit-box-flex: 20;
       -ms-flex: 20;
@@ -532,7 +532,7 @@
   border-radius: 30px 30px 0px 0px;
   font-size: 25px;
   font-weight: bold;
-  color: #7BC5C5;
+  color: #1F3A68;
 }
 
 .Line {
@@ -578,7 +578,7 @@
   font-size: 1.5rem;
   list-style: none;
   padding-left: 0px;
-  color: #47A5C7;
+  color: #3A5F99;
   text-decoration: none;
   font-weight: 500;
 }
@@ -621,7 +621,7 @@
 
 #type-speed {
   font-size: 48px;
-  color: #47A5C7;
+  color: #3A5F99;
   margin-top: 8px;
   margin-bottom: 40px;
   font-weight: 500;
@@ -651,7 +651,7 @@
   font-weight: 600;
   list-style: none;
   padding-left: 0px;
-  color: #47A5C7;
+  color: #3A5F99;
   margin-bottom: 6px;
 }
 /*# sourceMappingURL=main.css.map */

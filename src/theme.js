@@ -1,9 +1,9 @@
 
 export default {
-  PrimaryLight: "#7BC5C5",
-  PrimaryDark: "#2B6D90",
-  Primary: "#47A5C7",
+  PrimaryLight: "#1F3A68",
+  PrimaryDark: "#14284A",
+  Primary: "#3A5F99",
   bronze: "#A9852A",
   pink: "#EDC5C5",
-  mint: "#BAE8E8",
+  mint: "#D6E0F0",
 };

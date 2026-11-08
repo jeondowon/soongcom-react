@@ -13,7 +13,7 @@ function TypingSpeedGraph({ num, list }) {
       >
         <XAxis dataKey="x" />
         <YAxis />
-        <Line type="monotone" dataKey="speed" stroke="#47A5C7" activeDot={{ r: 8 }} />
+        <Line type="monotone" dataKey="speed" stroke="#3A5F99" activeDot={{ r: 8 }} />
       </LineChart>
     </div>
   )

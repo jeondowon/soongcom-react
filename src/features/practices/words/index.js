@@ -147,7 +147,7 @@ function WordsPractice() {
               <div className="StatueBarElem">진행도</div>
               <div className="StatueBarElem">
                 <div className="ProgressBarWrapper">
-                  <ProgressBar completed={progressPercent} bgColor="#7BC5C5"/>
+                  <ProgressBar completed={progressPercent} bgColor="#1F3A68"/>
                 </div>
               </div>
             </div>
@@ -159,7 +159,7 @@ function WordsPractice() {
               <div className="StatueBarElem">정확도</div>
               <div className="StatueBarElem">
                 <div className="ProgressBarWrapper">
-                  <ProgressBar completed={accuracy} bgColor="#7BC5C5" />
+                  <ProgressBar completed={accuracy} bgColor="#1F3A68" />
                 </div>
               </div>
             </div>
