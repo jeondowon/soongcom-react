@@ -1,7 +1,6 @@
 import React from 'react';
 import { useState, useCallback } from 'react';
 import { Link } from "react-router-dom";
-import Avatar from '../assets/codong.png';
 import DetailMenu from './DetailMenu';
 
 
@@ -30,7 +29,7 @@ function Header() {
           <div style={MenuItemStyle}>스크립트</div>
         </div>
         <div style={AvatarStyle}>
-          <img width='40px' height='40px' src={Avatar} />
+          <img width='50px' height='50px' src='/handong.svg' alt='한동대학교 로고' style={LogoStyle} />
         </div>
       </div>
       {(isHovering || isChoosing) && <DetailMenu onChoose={handleMouseChoose}/>}
@@ -79,6 +78,13 @@ const MenuItemStyle = {
 const AvatarStyle = {
   position: 'absolute',
   right: '60px',
+}
+
+// 네이비 헤더에서 로고 테두리가 잘 보이도록 흰 원 배경을 넣음
+const LogoStyle = {
+  background: 'white',
+  borderRadius: '50%',
+  padding: '3px',
 }
 
 export default Header;
